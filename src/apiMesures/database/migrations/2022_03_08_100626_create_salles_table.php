@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbSalle extends Migration
+class CreateSallesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateTbSalle extends Migration
      */
     public function up()
     {
-        Schema::create('tb_salle', function (Blueprint $table) {
-            $table->id('pk_salle');
+        Schema::create('salles', function (Blueprint $table) {
+            $table->bigIncrements('pk_salle');
             $table->string('numero_sal', 6); // humidité de max 3 caractères
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateTbSalle extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_salle');
+        Schema::dropIfExists('salles');
     }
 }
