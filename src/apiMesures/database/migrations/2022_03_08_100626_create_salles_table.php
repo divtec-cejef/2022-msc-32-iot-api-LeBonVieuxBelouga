@@ -13,8 +13,8 @@ class CreateSallesTable extends Migration
      */
     public function up()
     {
-        Schema::create('salles', function (Blueprint $table) {
-            $table->bigIncrements('pk_salle');
+        Schema::create('tb_salles', function (Blueprint $table) {
+            $table->bigIncrements('pk_salle')->unique();
             $table->string('numero_sal', 6); // humidité de max 3 caractères
             $table->timestamps();
         });
