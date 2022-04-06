@@ -2,26 +2,30 @@
 
 namespace App\Models;
 
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-class Salle extends Model
+class Device extends Model
 {
+
+    use HasFactory;
+
     //affiche ce message lors d'une erreur 404
-    public $modelNotFoundMessage = "Salle inexistante";
+    public $modelNotFoundMessage = "Device inexistante";
 
     /**
      * La table associée au modèle.
      *
      * @var string
      */
-    // protected $table = 'tb_salles';
+    protected $table = 'tb_devices';
 
     /**
      * La clé primaire associée à la table.
      *
      * @var string
      */
-    // protected $primaryKey = 'pk_salle';
+    protected $primaryKey = 'pk_device';
 
     /**
      * Validation des données
@@ -30,7 +34,9 @@ class Salle extends Model
     static function validateRules()
     {
         return [
-            'numero_sal' => 'required|numeric',
+            'fk_salle_dev' => 'int',
+            'identifiant_dev' => 'int',
+            'nom_dev' => 'string'
         ];
     }
 
@@ -40,7 +46,9 @@ class Salle extends Model
      * @var array
      */
     protected $fillable = [
-        'numero_sal'
+        'fk_salle_dev',
+        'identifiant_dev',
+        'nom_dev'
     ];
 
     /**

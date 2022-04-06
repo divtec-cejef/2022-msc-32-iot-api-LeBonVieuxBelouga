@@ -2,18 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Salle;
+use App\Models\Device;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SalleFactory extends Factory
+class DeviceFactory  extends Factory
 {
+
     /**
      * Le nom du modèle correspondant.
      *
      * @var string
      */
-    protected $model = Salle::class;
+    protected $model = Device::class;
 
     /**
      * Définir l'état par défaut du modèle.
@@ -23,7 +24,9 @@ class SalleFactory extends Factory
     public function definition()
     {
         return [
-            'numero_sal' => $this->faker->paragraph, // Paragraphe de textes aléatoires
+            'fk_salle_dev' => $this->faker->numberBetween(1,50),
+            'identifiant_dev' => $this->faker->text(6), // Phrase avec texte aléatoire
+            'nom_dev' => $this->faker->text(50), // Paragraphe de textes aléatoires
         ];
     }
 }

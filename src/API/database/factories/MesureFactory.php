@@ -23,9 +23,10 @@ class MesureFactory extends Factory
     public function definition()
     {
         return [
+            'fk_device_mes' => $this->faker->numberBetween(1, 50),
+            'humidite_mes' => $this->faker->numberBetween(1, 100), // Nombre aléatoire entre 1 et 100,
             'temperature_mes' => $this->faker->numberBetween(1, 100), // Nombre aléatoire entre 1 et 100,
-            'date_mes' => $this->faker->date('Y/m/d'), // Date aléatoire au format MySQL
-            'heure_mes'=> $this->faker->date('H:i:s') // Date aléatoire au format MySQL
+            'date_mes' => $this->faker->date('Y-m-d H:i:s'), // Date aléatoire au format MySQL
         ];
     }
 }

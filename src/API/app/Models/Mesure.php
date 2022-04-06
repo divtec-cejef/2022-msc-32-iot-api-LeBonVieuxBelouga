@@ -2,27 +2,30 @@
 
 namespace App\Models;
 
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-class Device extends Model
+class Mesure extends Model
 {
 
+    use HasFactory;
+
     //affiche ce message lors d'une erreur 404
-    public $modelNotFoundMessage = "Device inexistante";
+    public $modelNotFoundMessage = "Mesure inexistante";
 
     /**
      * La table associée au modèle.
      *
      * @var string
      */
-    // protected $table = 'tb_devices';
+    protected $table = 'tb_mesures';
 
     /**
      * La clé primaire associée à la table.
      *
      * @var string
      */
-    // protected $primaryKey = 'pk_device';
+    // protected $primaryKey = 'pk_mesure';
 
     /**
      * Validation des données
@@ -31,8 +34,10 @@ class Device extends Model
     static function validateRules()
     {
         return [
-            'identifiant_dev' => 'required|numeric',
-            'nom_dev' => 'required|string'
+            'fk_device_mes' => 'required',
+            'humidite_mes' => 'required',
+            'temperature_mes' => 'required',
+            'date_mes' => 'required|date',
         ];
     }
 
@@ -42,8 +47,10 @@ class Device extends Model
      * @var array
      */
     protected $fillable = [
-        'identifiant_dev',
-        'nom_dev'
+        'fk_device_mes',
+        'humidite_mes',
+        'temperature_mes',
+        'date_mes',
     ];
 
     /**

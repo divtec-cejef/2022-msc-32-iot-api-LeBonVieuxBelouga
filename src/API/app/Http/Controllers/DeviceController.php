@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Mesure;
+use App\Models\Device;
 use Illuminate\Http\Request;
 
-class MesureController extends Controller
+class DeviceController extends Controller
 {
     /**
      * Affiche toutes les mesures par date et heure
@@ -15,12 +15,9 @@ class MesureController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function showAllMeasures()
+    public function showAllDevice()
     {
-        return Mesure::table('mesures')
-                ->orderBy('date_mes','', 'ASC')
-                ->orderBy('heure_mes','', 'ASC')
-                ->get();
+        return Device::orderBy('identifiant_dev', 'ASC')->get();;
     }
 
     /**
@@ -30,9 +27,9 @@ class MesureController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function showOneMeasures($id)
+    public function showOneDevice($idDevice)
     {
-        return Mesure::findOrFail($id);
+        return Device::findOrFail($idDevice);
     }
 
     /**
@@ -45,8 +42,8 @@ class MesureController extends Controller
      */
     public function create(Request $request)
     {
-        $this->validate($request, Mesure::validateRules());
-        return Mesure::create($request->all());
+        $this->validate($request, Device::validateRules());
+        return Device::create($request->all());
     }
 
     /**
@@ -58,11 +55,11 @@ class MesureController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function update($id, Request $request)
+    public function update($idDevice, Request $request)
     {
-        $this->validate($request, Mesure::validateRules());
-        Mesure::findOrFail($id)->update($request->all());
-        return Mesure::findOrFail($id);
+        $this->validate($request, Device::validateRules());
+        Device::findOrFail($idDevice)->update($request->all());
+        return Device::findOrFail($idDevice);
     }
 
     /**
@@ -72,9 +69,9 @@ class MesureController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete($id)
+    public function delete($idDevice)
     {
-        Mesure::findOrFail($id)->delete();
+        Device::findOrFail($idDevice)->delete();
         return response('', 204);
     }
 }

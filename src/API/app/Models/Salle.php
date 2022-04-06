@@ -2,27 +2,30 @@
 
 namespace App\Models;
 
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-class Mesure extends Model
+class Salle extends Model
 {
 
+    use HasFactory;
+
     //affiche ce message lors d'une erreur 404
-    public $modelNotFoundMessage = "Mesure inexistante";
+    public $modelNotFoundMessage = "Salle inexistante";
 
     /**
      * La table associée au modèle.
      *
      * @var string
      */
-    // protected $table = 'tb_mesures';
+    protected $table = 'tb_salles';
 
     /**
      * La clé primaire associée à la table.
      *
      * @var string
      */
-    // protected $primaryKey = 'pk_mesure';
+    // protected $primaryKey = 'pk_salle';
 
     /**
      * Validation des données
@@ -31,9 +34,7 @@ class Mesure extends Model
     static function validateRules()
     {
         return [
-            'temperature_mes' => 'required|numeric',
-            'date_mes' => 'required|date',
-            'heure_mes' => 'required|string'
+            'numero_sal' => 'required|string',
         ];
     }
 
@@ -43,9 +44,7 @@ class Mesure extends Model
      * @var array
      */
     protected $fillable = [
-        'temperature_mes',
-        'date_mes',
-        'heure_mes'
+        'numero_sal'
     ];
 
     /**
